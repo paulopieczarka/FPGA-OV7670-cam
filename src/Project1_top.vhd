@@ -70,7 +70,7 @@ entity Project1_top is
 	 HEX2 : OUT std_logic_vector( 6 downto 0 );
 	 HEX3 : OUT std_logic_vector( 6 downto 0 );
 	 SW : in std_logic_vector( 9 downto 0 );
-	 KEY : in std_logic_vector( 3 downto 0);
+	 KEY : in std_logic_vector( 2 downto 0);
 	 LEDG          : OUT    std_logic_vector(7 downto 0);
 	 LEDR : OUT std_logic_vector( 9 downto 0 );
 
@@ -114,7 +114,7 @@ architecture rtl of Project1_top is
       sioc  : OUT   STD_LOGIC;
       siod  : inout STD_LOGIC;
       sw : in std_logic_vector( 9 downto 0 );
-      key : in std_logic_vector( 3 downto 0 )
+      key : in std_logic_vector( 2 downto 0 )
     --readcheck : OUT std_logic_vector (7 downto 0)
     );
   END COMPONENT;
@@ -265,8 +265,8 @@ begin
   with KEY(1) select key1push <= '1' when '0', '0' when others;
   -- key 3 used in registers.
   with KEY(2) select key2push <= '1' when '0', '0' when others;
-  with KEY(3) select key3push <= '1' when '0', '0' when others;
-  --SW1 to 6 used by ovregisters
+  -- with KEY(3) select key3push <= '1' when '0', '0' when others;
+  -- SW1 to 6 used by ovregisters
   with SW(0) select rgb <= '1' when '1', '0' when others;
   with SW(5) select sw5 <= '1' when '1', '0' when others;
   with SW(6) select sw6 <= '1' when '1', '0' when others;
